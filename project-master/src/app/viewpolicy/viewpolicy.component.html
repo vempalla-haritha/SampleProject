@@ -1,0 +1,28 @@
+<h3>List of Policies</h3>
+<table class="table table-striped" >
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Policy Name</th>
+            <th>Policy Type</th>
+            <th>Duration</th>
+            <th>Amount</th>
+            <th>Due date</th>
+            <th>Fine</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let policy of policies | async ">
+            <td>{{policy.id}}</td>
+            <td>{{policy.name}}</td>
+            <td>{{policy.type}}</td>
+            <td>{{policy.duration}}</td>
+            <td>{{policy.amount}}</td>
+            <td>{{policy.date}}</td>
+            <td>{{policy.fine}}</td>
+            <td><span class="button is-small btn-info" (click)="editPolicy(policy)" >Edit </span>
+                
+        </tr>
+    </tbody>
+</table>

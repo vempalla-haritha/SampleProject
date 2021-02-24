@@ -1,0 +1,51 @@
+<div [hidden]="submitted" style="width: 500px ;" class="cform">
+    <form (ngSubmit)="onSubmit()" #policyform="ngForm">
+        <div class="form-group">
+            <label for="name">PolicyName</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="policy.name" name="name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">Policy name is required</small>
+        </div>
+        <div class="form-group">
+            <label>PolicyType</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="type" value="MOTORPOLICY" [(ngModel)]="policy.type" #gender="ngModel" required>
+                <label class="form-check-label">Motor Policy</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="type" value="HEALTHPOLICY" [(ngModel)]="policy.type" #gender="ngModel" required>
+                <label class="form-check-label">Health Policy</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="type" value="PROPERTYPOLICY" [(ngModel)]="policy.type" #gender="ngModel" required>
+                <label class="form-check-label">Property Policy</label>
+            </div>
+            <div *ngIf="gender.invalid && gender.untouched" class="text-danger">Policy type is required</div>
+        </div>
+        <div class="form-group">
+            <label for="name">Duration</label>
+            <input type="text" class="form-control" id="duration" required [(ngModel)]="policy.duration" name="duration" #duration="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="duration.valid || duration.untouched">Duration is required</small>
+        </div>
+        <div class="form-group">
+            <label for="name">Amount</label>
+            <input type="text" class="form-control" id="amount" required [(ngModel)]="policy.amount" name="amount" #amount="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="amount.valid || amount.untouched">Amount is required</small>
+        </div>
+        <div class="form-group">
+            <label for="date">Due date</label>
+            <input type="date" class="form-control" id="date" required [(ngModel)]="policy.date" 
+            name="date" #date="ngModel" [class.is-invalid]="date.invalid && date.touched">
+            <small class="text-danger" [class.d-none]="date.valid || date.untouched">Due date is required</small>
+        </div>
+        <div class="form-group">
+            <label for="name">Fine</label>
+            <input type="text" class="form-control" id="fine" required [(ngModel)]="policy.fine" name="fine" #fine="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="fine.valid || fine.untouched">Amount is required</small>
+        </div>
+        <button type="submit" class="btn btn-success"[disabled]="policyform.form.invalid">Submit</button>
+    </form>
+    </div>
+    <div [hidden]="!submitted">
+        <h4>you submitted successfully</h4>
+        <button class="btn btn-success" (click)="newPolicy()">Add</button>
+    </div>

@@ -1,0 +1,42 @@
+<div style="width: 300px;" class="sform">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="age">PolicyName</label>
+            <input type="text" class="form-control" id="type" required [(ngModel)]="type" name="type">
+        </div> 
+        <div class="btn-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+    </div>
+    <br/>
+    <div class="tform">
+    <div  [hidden]="!submitted">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Policy Name</th>
+                <th>Policy Type</th>
+                <th>Duration</th>
+                <th>Amount</th>
+                <th>Due date</th>
+                <th>Fine</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let policy of policies ">
+                <td>{{policy.id}}</td>
+                <td>{{policy.name}}</td>
+                <td>{{policy.type}}</td>
+                <td>{{policy.duration}}</td>
+                <td>{{policy.amount}}</td>
+                <td>{{policy.date}}</td>
+                <td>{{policy.fine}}</td>
+                <td><span class="button is-small btn-info" (click)="register(policy)" >Register </span>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
